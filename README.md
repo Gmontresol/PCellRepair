@@ -27,8 +27,8 @@ Utilizamos **Triggers** para realizar a baixa automática de estoque a cada peç
 
 ---
 
-## 📊 Diagrama de Requisitos e Casos de Uso
-Abaixo está a representação gráfica dos requisitos levantados para o sistema, ilustrando como os atores interagem com as funcionalidades propostas.
+## 📊 Requsitos do sistema
+Abaixo está a representação dos requisitos levantados para o sistema.
 
 ![Diagrama de Requisitos](requisitos.png)
 
