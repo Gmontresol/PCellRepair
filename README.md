@@ -4,6 +4,7 @@
 ---
 
 ### 👥 Equipe Desenvolvedora (Integrantes):
+
 Caio Corrêa Santos  
 Gabriel Cintra Rodrigues Montresol
 Heitor Camilo
