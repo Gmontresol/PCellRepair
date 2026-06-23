@@ -30,7 +30,7 @@ Utilizamos **Triggers** para realizar a baixa automática de estoque a cada peç
 ## 📊 Requsitos do sistema
 Abaixo está a representação dos requisitos levantados para o sistema.
 
-![Diagrama de Requisitos](requisitos.png)
+[📄 Clique aqui para abrir o Documento de Requisitos Completo (PDF)](requisitos.pdf)
 
 ---
 
