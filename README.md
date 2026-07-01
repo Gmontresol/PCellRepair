@@ -26,14 +26,13 @@ Decidimos modelar o banco de dados no Oracle contendo 8 tabelas altamente normal
 Utilizamos **Triggers** para realizar a baixa automática de estoque a cada peça vendida e para registrar logs de auditoria sempre que o status de um serviço é alterado. Além disso, criamos uma **Stored Procedure** com cursores e controle de transações (Commit/Rollback) para garantir o encerramento seguro dos chamados e o cálculo financeiro preciso das operações.
 
 ---
+
 # 📊 Documento do Projeto
 Abaixo está o documento do projeto.
-[📄 Clique aqui para abrir o Documento do Projeto (PDF)](ProjetoFinal.pdf)
 
-## 📊 Requsitos do sistema
-Abaixo está a representação dos requisitos levantados para o sistema.
+[📄 Clique aqui para abrir/baixar o Documento do Projeto (PDF)](ProjetoFinal.pdf)
 
-[📄 Clique aqui para abrir o Documento de Requisitos Completo (PDF)](requisitos.pdf)
+![Visualização do Projeto Final](projeto_final.png)
 
 ---
 
