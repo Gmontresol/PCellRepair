@@ -30,7 +30,7 @@ Utilizamos **Triggers** para realizar a baixa automática de estoque a cada peç
 # 📊 Documento do Projeto
 Abaixo está o documento do projeto.
 
-[📄 Clique aqui para abrir/baixar o Documento do Projeto (PDF)](ProjetoFinal.pdf)
+[📄 Clique aqui para baixar o Documento do Projeto (PDF)](ProjetoFinal.pdf?raw=true)
 
 [📄 Visualização do Projeto Final](projeto_final.png)
 
