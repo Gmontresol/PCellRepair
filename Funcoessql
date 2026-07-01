@@ -1,0 +1,105 @@
+/* Retorna todos os id_clientes cadastrados com determinado CPF */
+CREATE OR REPLACE FUNCTION chamar_clientes(CPF_F IN VARCHAR2) 
+RETURN SYS_REFCURSOR IS
+    c SYS_REFCURSOR;
+BEGIN
+    OPEN c FOR
+        SELECT id_cliente
+        FROM cliente
+        WHERE CPF = CPF_F;
+        
+    RETURN c;
+END;
+/
+
+
+/* Retorna todos os id_chamado de determinado id_cliente */
+CREATE OR REPLACE FUNCTION chamar_pedidos_cliente(sinal_cliente IN NUMBER) 
+RETURN SYS_REFCURSOR IS
+    c SYS_REFCURSOR;
+BEGIN
+    OPEN c FOR
+        SELECT id_chamado
+        FROM chamado
+        WHERE id_cliente = sinal_cliente;
+        
+    RETURN c;
+END;
+/
+
+
+/* Retorna todos os id_chamado de determinado id_funcionario */
+CREATE OR REPLACE FUNCTION chamar_pedidos_funcionario(sinal_funcionario IN NUMBER) 
+RETURN SYS_REFCURSOR IS
+    c SYS_REFCURSOR;
+BEGIN
+    OPEN c FOR
+        SELECT c.id_chamado
+        FROM chamado c
+        INNER JOIN funcionario_chamado fc ON fc.id_chamado = c.id_chamado
+        WHERE fc.id_funcionario = sinal_funcionario;
+        
+    RETURN c;
+END;
+/
+
+
+
+/* Retorna o valor total de um chamado */
+CREATE OR REPLACE FUNCTION chamado_valor_total(sinal_chamado IN NUMBER) 
+RETURN NUMBER IS
+    valor_total NUMBER := 0;
+    
+    CURSOR cs_valor_total IS
+        SELECT Qtde_vendida, valor_unitario
+        FROM itens_chamado
+        WHERE id_chamado = sinal_chamado;
+BEGIN
+    FOR valor IN cs_valor_total LOOP
+        valor_total := (valor.Qtde_vendida * valor.valor_unitario) + valor_total;
+    END LOOP;
+    
+    RETURN valor_total;
+END;
+/
+
+
+
+/* Retorna o tempo de trabalho de um funcionario */
+CREATE OR REPLACE FUNCTION chamado_duracao(sinal_funcionario IN NUMBER) 
+RETURN NUMBER IS
+    tempo_trabalho NUMBER := 0;
+    
+    CURSOR cs_tempo_trabalho IS
+        SELECT c.data_inicio, c.data_termino
+        FROM funcionario_chamado fc
+        INNER JOIN chamado c ON c.id_chamado = fc.id_chamado
+        WHERE fc.id_funcionario = sinal_funcionario;
+BEGIN
+    FOR valor IN cs_tempo_trabalho LOOP
+        tempo_trabalho := tempo_trabalho + (NVL(valor.data_termino, SYSDATE) - valor.data_inicio);
+    END LOOP;
+    
+    RETURN tempo_trabalho;
+END;
+/
+
+
+/* Retorna o dinheiro ganho por um funcionario até então */
+CREATE OR REPLACE FUNCTION funcionario_comissao(sinal_funcionario IN NUMBER) 
+RETURN NUMBER IS
+    dinheiro_funcionario NUMBER := 0;
+    dinheiro_mes NUMBER := 0;
+    tempo_trabalhado NUMBER;
+BEGIN
+    SELECT salario
+    INTO dinheiro_mes
+    FROM funcionario
+    WHERE id_funcionario = sinal_funcionario;
+
+    tempo_trabalhado := chamado_duracao(sinal_funcionario);
+    dinheiro_funcionario := (tempo_trabalhado / 30) * dinheiro_mes;
+
+    RETURN dinheiro_funcionario;
+END;
+/
