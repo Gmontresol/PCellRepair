@@ -32,7 +32,7 @@ Abaixo está o documento do projeto.
 
 [📄 Clique aqui para abrir/baixar o Documento do Projeto (PDF)](ProjetoFinal.pdf)
 
-![Visualização do Projeto Final](projeto_final.png)
+[📄 Visualização do Projeto Final](projeto_final.png)
 
 ---
 
